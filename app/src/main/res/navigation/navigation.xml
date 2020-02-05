@@ -39,4 +39,9 @@
         android:name="com.free.your_mind.CongratulationFragment"
         android:label="CongratulationFragment"
         tools:layout="@layout/congratulation_fragment"/>
+    <fragment
+        android:id="@+id/allDoneFragment"
+        android:name="com.free.your_mind.AllDoneFragment"
+        android:label="all_done_fragment"
+        tools:layout="@layout/all_done_fragment" />
 </navigation>
