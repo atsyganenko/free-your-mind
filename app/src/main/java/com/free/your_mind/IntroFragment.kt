@@ -39,7 +39,7 @@ class IntroFragment : Fragment() {
         }
 
         binding.start.setOnClickListener{view : View ->
-            view.findNavController().navigate(R.id.taskFragment)}
+            view.findNavController().navigate(R.id.action_introFragment_to_tasksFragment)}
 
         return binding.root
     }
