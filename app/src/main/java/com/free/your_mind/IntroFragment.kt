@@ -2,14 +2,13 @@ package com.free.your_mind
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
 import com.free.your_mind.databinding.IntroFragmentBinding
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 
 
 /**
@@ -31,6 +30,8 @@ class IntroFragment : Fragment() {
             R.layout.intro_fragment, container, false
         )
 
+        setHasOptionsMenu(true)
+
         challenges.forEach {
             val textView = TextView(this.context)
             textView.textSize = 20f
@@ -38,9 +39,24 @@ class IntroFragment : Fragment() {
             binding.allChallenges.addView(textView)
         }
 
-        binding.start.setOnClickListener{view : View ->
-            view.findNavController().navigate(R.id.action_introFragment_to_tasksFragment)}
+        binding.start.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_introFragment_to_tasksFragment)
+        }
 
         return binding.root
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            view!!.findNavController()
+        )
+                || super.onOptionsItemSelected(item)
+    }
+
 }

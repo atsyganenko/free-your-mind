@@ -44,4 +44,9 @@
         android:name="com.free.your_mind.AllDoneFragment"
         android:label="all_done_fragment"
         tools:layout="@layout/all_done_fragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.free.your_mind.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/about_fragment" />
 </navigation>
