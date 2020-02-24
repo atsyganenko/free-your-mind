@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.free.your_mind.data.Tasks
 import com.free.your_mind.databinding.TaskDetailsFragmentBinding
 
 
@@ -26,8 +27,17 @@ class TaskDetailsFragment : Fragment() {
             container,
             false
         )
-        binding.doneButton.setOnClickListener{view:View ->
-            view.findNavController().navigate(R.id.action_taskDetailsFragment_to_congratulationFragment)
+
+        val args = TaskDetailsFragmentArgs.fromBundle(arguments!!)
+        val task = Tasks.challenges.get(args.taskId)
+        if (task != null) {
+            binding.name.text = task.name
+            binding.description.text = task.description
+        }
+
+        binding.doneButton.setOnClickListener { view: View ->
+            view.findNavController()
+                .navigate(R.id.action_taskDetailsFragment_to_congratulationFragment)
         }
         return binding.root
     }
