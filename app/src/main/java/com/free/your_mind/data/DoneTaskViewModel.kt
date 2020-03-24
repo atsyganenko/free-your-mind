@@ -6,11 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
 
-class DoneTaskViewModel(
-    val database: TaskDatabaseDao,
-    application: Application
-) : AndroidViewModel(application) {
+class DoneTaskViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val database = TaskDatabase.getInstance(application).taskDatabaseDao
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
@@ -24,7 +22,8 @@ class DoneTaskViewModel(
     }
 
     fun markTaskAsDone(taskId: Int) {
-        if (doneTasks.value == null || !doneTasks.value!!.contains(taskId)) {
+        if (_doneTasks.value == null || !_doneTasks.value!!.contains(taskId)) {
+            _doneTasks.postValue(_doneTasks.value!!.plus(taskId))
             uiScope.launch {
                 withContext(Dispatchers.IO) {
                     database.insert(DoneTask(taskId))

@@ -3,13 +3,11 @@ package com.free.your_mind
 
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.Fragment
-import com.free.your_mind.databinding.IntroFragmentBinding
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.free.your_mind.data.Tasks
+import com.free.your_mind.databinding.IntroFragmentBinding
 
 
 /**

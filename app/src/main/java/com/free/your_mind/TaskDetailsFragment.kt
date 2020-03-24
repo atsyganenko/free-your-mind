@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.free.your_mind.data.*
+import com.free.your_mind.data.DoneTaskViewModel
+import com.free.your_mind.data.Tasks
 import com.free.your_mind.databinding.TaskDetailsFragmentBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +22,7 @@ import kotlinx.coroutines.Job
  */
 class TaskDetailsFragment : Fragment() {
 
-    private lateinit var dataSource: TaskDatabaseDao
+    private val viewModel: DoneTaskViewModel by activityViewModels()
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -36,12 +37,6 @@ class TaskDetailsFragment : Fragment() {
             container,
             false
         )
-
-        val application = requireNotNull(this.activity).application
-        val dataSource = TaskDatabase.getInstance(application).taskDatabaseDao
-        val viewModelFactory = DoneTaskViewModelFactory(dataSource, application)
-        val viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(DoneTaskViewModel::class.java)
 
         val args = TaskDetailsFragmentArgs.fromBundle(arguments!!)
 
