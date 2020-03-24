@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.free.your_mind.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.navHostFragment)
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         NavigationUI.setupWithNavController(binding.navView, navController)
+
+        Timber.i("MainActivity created")
     }
 
     override fun onSupportNavigateUp(): Boolean {

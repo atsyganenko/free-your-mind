@@ -54,6 +54,7 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     //Room
     implementation "androidx.room:room-ktx:$room_version"

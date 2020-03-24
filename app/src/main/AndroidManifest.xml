@@ -3,6 +3,7 @@
     package="com.free.your_mind">
     <uses-sdk android:targetSdkVersion="19" />
     <application
+        android:name=".FreeMindApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
