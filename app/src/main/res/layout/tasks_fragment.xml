@@ -2,23 +2,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    tools:context="com.free.your_mind.TasksFragment">
+    android:orientation="vertical">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/taskConstraint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context="com.free.your_mind.TasksFragment">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tasks"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="300dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent">
-        </LinearLayout>
+            android:layout_height="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

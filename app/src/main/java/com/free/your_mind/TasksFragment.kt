@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import com.free.your_mind.data.DoneTaskViewModel
 import com.free.your_mind.data.Tasks
 import com.free.your_mind.databinding.TasksFragmentBinding
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -26,12 +27,22 @@ class TasksFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val binding = DataBindingUtil.inflate<TasksFragmentBinding>(
             inflater,
             R.layout.tasks_fragment, container, false
         )
 
+        val adapter = TaskAdapter()
+        binding.tasks.adapter = adapter
+
         viewModel.doneTaskIds.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
+
+/*        viewModel.doneTaskIds.observe(viewLifecycleOwner, Observer {
             Tasks.challenges.forEach { (id, task) ->
 
                 var maybeView = binding.tasks.findViewById<TextView>(id)
@@ -54,7 +65,8 @@ class TasksFragment : Fragment() {
                 maybeView.text =
                     if (viewModel.doneTaskIds.value?.contains(id) == true) task.name.plus(" #DONE") else task.name
             }
-        })
+        })*/
+        binding.lifecycleOwner = this
 
         return binding.root
     }
