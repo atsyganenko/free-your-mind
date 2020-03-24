@@ -31,21 +31,28 @@ class TasksFragment : Fragment() {
             R.layout.tasks_fragment, container, false
         )
 
-        viewModel.doneTasks.observe(viewLifecycleOwner, Observer {
+        viewModel.doneTaskIds.observe(viewLifecycleOwner, Observer {
             Tasks.challenges.forEach { (id, task) ->
-                val textView = TextView(this.context)
-                textView.textSize = 20f
-                textView.text =
-                    if (viewModel.doneTasks.value?.contains(id) == true) task.name.plus(" #DONE") else task.name
-                textView.setOnClickListener { view: View ->
-                    view.findNavController()
-                        .navigate(
-                            TasksFragmentDirections.actionTasksFragmentToTaskDetailsFragment(
-                                id
+
+                var maybeView = binding.tasks.findViewById<TextView>(id)
+                if(maybeView == null) {
+                    val textView = TextView(this.context)
+                    textView.id = id
+                    textView.textSize = 20f
+                    textView.setOnClickListener { view: View ->
+                        view.findNavController()
+                            .navigate(
+                                TasksFragmentDirections.actionTasksFragmentToTaskDetailsFragment(
+                                    id
+                                )
                             )
-                        )
+                    }
+                    binding.tasks.addView(textView)
+                    maybeView = textView
                 }
-                binding.tasks.addView(textView)
+
+                maybeView.text =
+                    if (viewModel.doneTaskIds.value?.contains(id) == true) task.name.plus(" #DONE") else task.name
             }
         })
 

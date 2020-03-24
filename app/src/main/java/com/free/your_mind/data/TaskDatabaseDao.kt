@@ -1,5 +1,6 @@
 package com.free.your_mind.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -11,6 +12,9 @@ interface TaskDatabaseDao {
     fun insert(task: DoneTask)
 
     @Query("SELECT * FROM done_free_mind_challenges")
-    fun getAllDoneTasks(): List<DoneTask>
+    fun getAllDoneTasks(): LiveData<List<DoneTask>>
+
+    @Query("SELECT taskId FROM done_free_mind_challenges")
+    fun doneTaskIds(): LiveData<List<Int>>
 
 }
