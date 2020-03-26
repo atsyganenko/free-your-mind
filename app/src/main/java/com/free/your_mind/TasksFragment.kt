@@ -5,23 +5,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import com.free.your_mind.data.DoneTaskViewModel
-import com.free.your_mind.data.Tasks
+import com.free.your_mind.data.TasksViewModel
+import com.free.your_mind.data.Task
 import com.free.your_mind.databinding.TasksFragmentBinding
-import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
  */
 class TasksFragment : Fragment() {
 
-    private val viewModel: DoneTaskViewModel by activityViewModels()
+    private val viewModel: TasksViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +33,8 @@ class TasksFragment : Fragment() {
         val adapter = TaskAdapter()
         binding.tasks.adapter = adapter
 
-        viewModel.doneTaskIds.observe(viewLifecycleOwner, Observer {
-            it?.let {
+        viewModel.tasks.observe(viewLifecycleOwner, Observer<List<Task>> {
+            it.let {
                 adapter.data = it
             }
         })

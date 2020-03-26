@@ -9,8 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.free.your_mind.data.DoneTaskViewModel
-import com.free.your_mind.data.Tasks
+import com.free.your_mind.data.TasksViewModel
 import com.free.your_mind.databinding.TaskDetailsFragmentBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +21,7 @@ import kotlinx.coroutines.Job
  */
 class TaskDetailsFragment : Fragment() {
 
-    private val viewModel: DoneTaskViewModel by activityViewModels()
+    private val viewModel: TasksViewModel by activityViewModels()
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -40,7 +39,7 @@ class TaskDetailsFragment : Fragment() {
 
         val args = TaskDetailsFragmentArgs.fromBundle(arguments!!)
 
-        val task = Tasks.challenges.get(args.taskId)
+        val task = viewModel.tasks.value!!.find { it.id == args.taskId }
         if (task != null) {
             binding.name.text = task.name
             binding.description.text = task.description

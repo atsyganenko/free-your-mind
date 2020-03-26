@@ -2,10 +2,11 @@ package com.free.your_mind
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.free.your_mind.data.Task
 
 class TaskAdapter : RecyclerView.Adapter<TaskViewHolder>() {
 
-    var data = listOf<Int>()
+    var data = listOf<Task>()
         set(value) {
             field = value
             notifyDataSetChanged()

@@ -4,17 +4,21 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface TaskDatabaseDao {
 
     @Insert
-    fun insert(task: DoneTask)
+    fun insert(task: Task)
 
-    @Query("SELECT * FROM done_free_mind_challenges")
-    fun getAllDoneTasks(): LiveData<List<DoneTask>>
+    @Insert
+    fun insertAll(tasks: List<Task>)
 
-    @Query("SELECT taskId FROM done_free_mind_challenges")
-    fun doneTaskIds(): LiveData<List<Int>>
+    @Query("SELECT * FROM free_mind_tasks")
+    fun getAllTasks(): LiveData<List<Task>>
+
+    @Update
+    fun updateTask(tas: Task)
 
 }
