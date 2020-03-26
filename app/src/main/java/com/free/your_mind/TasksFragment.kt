@@ -9,8 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.free.your_mind.data.TasksViewModel
+import androidx.navigation.findNavController
 import com.free.your_mind.data.Task
+import com.free.your_mind.data.TasksViewModel
 import com.free.your_mind.databinding.TasksFragmentBinding
 
 /**
@@ -30,7 +31,15 @@ class TasksFragment : Fragment() {
             R.layout.tasks_fragment, container, false
         )
 
-        val adapter = TaskAdapter()
+        val adapter = TaskAdapter(TaskClickListener { taskId ->
+            binding.tasks.findNavController()
+                .navigate(
+                    TasksFragmentDirections.actionTasksFragmentToTaskDetailsFragment(
+                        taskId
+                    )
+                )
+        })
+
         binding.tasks.adapter = adapter
 
         viewModel.tasks.observe(viewLifecycleOwner, Observer<List<Task>> {
