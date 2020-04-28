@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/introFragment"
         android:name="com.free.your_mind.IntroFragment"
-        android:label="IntroFragment"
+        android:label="Welcome"
         tools:layout="@layout/intro_fragment">
         <action
             android:id="@+id/action_introFragment_to_tasksFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/tasksFragment"
         android:name="com.free.your_mind.TasksFragment"
-        android:label="tasks_fragment"
+        android:label="Challenges"
         tools:layout="@layout/tasks_fragment" >
         <action
             android:id="@+id/action_tasksFragment_to_taskDetailsFragment"
@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/taskDetailsFragment"
         android:name="com.free.your_mind.TaskDetailsFragment"
-        android:label="TaskDetailsFragment"
+        android:label="Challenge"
         tools:layout="@layout/task_details_fragment">
         <action
             android:id="@+id/action_taskDetailsFragment_to_congratulationFragment"
@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/allDoneFragment"
         android:name="com.free.your_mind.AllDoneFragment"
-        android:label="all_done_fragment"
+        android:label="Completed Challenges"
         tools:layout="@layout/all_done_fragment" />
     <fragment
         android:id="@+id/aboutFragment"
