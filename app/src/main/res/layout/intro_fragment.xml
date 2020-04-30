@@ -12,9 +12,9 @@
         <ImageView
             android:id="@+id/catWelcome"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:contentDescription="@string/welcomeCatDesc"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="-40dp"
             android:src="@drawable/cat" />
 
         <TextView
@@ -22,8 +22,8 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="10dp"
             android:paddingBottom="50dp"
-            android:layout_marginTop="50dp"
             android:text="@string/Welcome"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
@@ -32,6 +32,7 @@
             style="@style/Widget.App.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/Challenges"/>
 
     </LinearLayout>

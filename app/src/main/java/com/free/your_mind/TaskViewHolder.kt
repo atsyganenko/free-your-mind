@@ -6,13 +6,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.free.your_mind.data.Task
 
-class TaskViewHolder private constructor(val textView: TextView) :
-    RecyclerView.ViewHolder(textView) {
+class TaskViewHolder private constructor(val view: ViewGroup) :
+    RecyclerView.ViewHolder(view) {
     fun bind(item: Task, clickListener: TaskClickListener) {
-        textView.text = item.toString()
-        textView.setOnClickListener {
-            clickListener.onClick(item)
+        val textView = itemView.findViewById(R.id.challengeName) as TextView
+        textView.text = item.name
 
+        view.setOnClickListener {
+            clickListener.onClick(item)
         }
     }
 
@@ -20,7 +21,7 @@ class TaskViewHolder private constructor(val textView: TextView) :
         fun from(parent: ViewGroup): TaskViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val view = layoutInflater
-                .inflate(R.layout.text_item_view, parent, false) as TextView
+                .inflate(R.layout.text_item_view, parent, false) as ViewGroup
             return TaskViewHolder(view)
         }
     }

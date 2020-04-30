@@ -48,30 +48,6 @@ class TasksFragment : Fragment() {
             }
         })
 
-/*        viewModel.doneTaskIds.observe(viewLifecycleOwner, Observer {
-            Tasks.challenges.forEach { (id, task) ->
-
-                var maybeView = binding.tasks.findViewById<TextView>(id)
-                if(maybeView == null) {
-                    val textView = TextView(this.context)
-                    textView.id = id
-                    textView.textSize = 20f
-                    textView.setOnClickListener { view: View ->
-                        view.findNavController()
-                            .navigate(
-                                TasksFragmentDirections.actionTasksFragmentToTaskDetailsFragment(
-                                    id
-                                )
-                            )
-                    }
-                    binding.tasks.addView(textView)
-                    maybeView = textView
-                }
-
-                maybeView.text =
-                    if (viewModel.doneTaskIds.value?.contains(id) == true) task.name.plus(" #DONE") else task.name
-            }
-        })*/
         binding.lifecycleOwner = this
 
         return binding.root
