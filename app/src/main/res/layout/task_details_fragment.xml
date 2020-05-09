@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.free.your_mind.TaskDetailsFragment">
@@ -29,6 +30,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Done" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:src="@drawable/cat_sakura" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
